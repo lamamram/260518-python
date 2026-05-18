@@ -3,7 +3,7 @@
 # "1. on créé la variable x")
 # "2. on place la valeur litérale 10 de type entier")
 # "3. dans x")
-## REM: = opérateur d'affection
+## REM: = opérateur d'affectation
 
 
 ## REM en python on ne DECLARE par le type de la variable
@@ -84,11 +84,17 @@ print("créer une variable user qui contient à la fois le prénom et l'âge")
 
 # %% ---------- MINI-EXO: opérateurs arithmétiques -------------------------
 # 1. saisir un entier au clavier => compris entre 0 et 86400 (nb de secondes dans une journée)
+nb_sec = input("saisir un nombre de secondes entre 0 et 86400: ")
 # 2. convertir la sortie précédente en entier
+nb_sec = int(nb_sec)
 # 3. décomposer ce nombre en nb en heure, minutes, secondes
-# 4. affichier le résulat <nb_hour>h <nb_min>m <nb_sec>
+nb_hour = nb_sec // 3600 # /: division réélle, //: division entière (quotient)
+nb_min = (nb_sec % 3600) // 60 # %: reste de la div. entière (modulo)
+nb_sec = nb_sec % 60
+# nb_sec %= 60
 
-nb_hour, nb_min, nb_sec = 0, 0, 0
+# 4. afficher le résulat <nb_hour>h <nb_min>m <nb_sec>
+print("il est", nb_hour, "h", nb_min, "m", nb_sec, "s")
 
 # %% ------------------- même affichage mas en formatant mieux ---------------
 

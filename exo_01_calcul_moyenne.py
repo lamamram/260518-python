@@ -10,21 +10,3 @@ que ces valeurs sont des entiers relatifs (1er cas entier naturel ensuite 2ème 
 """
 
 # %%
-
-valeurs = input("saisir des entiers relatifs séparés par une virgule: ")
-valeurs = valeurs.split(",")
-
-# %% -------------------------- boucle for -----------------------------------
-ints = []
-
-for val in valeurs:
-    val = val.strip() # enlever les espaces avant et après la valeur
-    if val.is_numeric() or (val[0] == "-" and val[1:].is_numeric()):
-        ints.append(int(val))
-    else:
-        print(f"{val} n'est pas un entier relatif. Arrêt de la saisie.")
-        break
-
-if ints:
-    moyenne = round(sum(ints) / len(ints), 2)
-    print(f"La moyenne des entiers saisis est: {moyenne:.2f}")

@@ -13,7 +13,6 @@ print(x)
 ## REM. python est un langage haut niveau => on ne manipule pas directement la mémoire
 ## l'interpréteur gère l'allocation des variables avec un indentifiant unique (id)
 print(id(x))
-
 # supprimer une variable
 del x
 

@@ -8,7 +8,13 @@ amount = int(amount)
 # si le montant est négatif => afficher "Transaction refusée: {montant} négatif"
 # sinon mais si le montant trop important => "Transaction refusée: {montant} fonds insuffisants" 
 # sinon => le retrait est effectué et "Transaction acceptée"
-
+if amount < 0:
+    print(f"Transaction refusée: {amount} négatif")
+elif amount > balance + overdraft:
+    print(f"Transaction refusée: {amount} fonds insuffisants")
+else:
+    balance -= amount
+    print("Transaction acceptée")
 
 
 
@@ -28,9 +34,15 @@ print(message)
 
 # prendre un int. savoir si l'entier est négatif ou nul
 x = int(input("saisir un entier: "))
+if x <= 0: 
+    print(f"{x} est négatif ou nul")
 
 
 # savoir çà ET si c'est impair (idem en remplaçant ET par OU)
+if x <= 0 and x % 2 != 0: 
+    print(f"{x} est négatif ou nul ET impair")
+if x <= 0 or x % 2: 
+    print(f"{x} est négatif ou nul OU impair")  
 
 # %% --------------- valeur fausses des built-ins et négation --------------
 
@@ -51,7 +63,8 @@ x = input("saisir une str: ")
 mots = ["appeler", "un", "chat"]
 
 # pour mot dans mots: afficher mot
-
+for mot in mots:
+    print(mot)
 
 print("-"*20)
 

@@ -101,7 +101,7 @@ mots = ["appeler", "un"]
 # ajouter "chat" à droite avec [] ou autrement
 # mots[2] = "chat" # [] : IndexError
 
-
+mots.append("chat")
 # ajouter ["chat", "un", "chat", "gris"] à droite
 
 # ajouter "il" à gauche
@@ -119,23 +119,34 @@ mots = ["appeler", "un"]
 mots = ["nommer", "un", "chien"]
 
 # remplacer "chien" en "chat" dans mots avec []
+# opération muable
+mots[2] = "chat"
+print(mots)
 
 mots = tuple(mots)
+print(mots)
 
 # remplacer "nommer" en "appeler" dans mots
-
+# mots[0] = "appeler" # TypeERROR INTERDIT avec un tuple
 # transformer mots en une str phrase et mettre le 1er car. en majuscule
-mots = " ".join(mots)
-
+phrase = " ".join(mots)
+print(phrase)
+# phrase[0] = "N"
+# opération immuable: réaffecter complètement la variable
+phrase = phrase.capitalize()
+print(phrase)
 
 # %% --------------- opérateur in : test d'appartenance -----------------------
 
 phrase = "appeler un chat"
 
 # savoir si "chat" est dans phrase
-
+print("chat" in phrase, phrase.count("chat"), phrase.find("chat"))
 
 # savoir si "chien" n'est pas dans phrase
-
+print("chien" not in phrase)
 
 # idem en transformant phrase en mots
+mots = phrase.split()
+print("chat" in mots, mots.count("chat"))
+# %%

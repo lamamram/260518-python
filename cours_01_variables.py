@@ -4,17 +4,20 @@
 # "2. on place la valeur litérale 10 de type entier")
 # "3. dans x")
 ## REM: = opérateur d'affectation
-
+x = 10
+print(x)
 
 ## REM en python on ne DECLARE par le type de la variable
 ## donc on peut changer la valeur de x avec une valeur d'un autre type de donées
 
 ## REM. python est un langage haut niveau => on ne manipule pas directement la mémoire
 ## l'interpréteur gère l'allocation des variables avec un indentifiant unique (id)
-
+print(id(x))
 
 # supprimer une variable
+del x
 
+# print(x) # Error
 
 
 # %% --------------- types built-in et politique de nommage -----------
@@ -36,13 +39,19 @@ x = 10
 
 print("incrémenter x: ajouter 1 à x et réaffecter x avec cet ajout")
 
-# opérateur d'incrémentation
+x = x + 1
 
+# ou avec opérateur d'incrémentation
+x += 1
 
 print("créer y avec 5 et z avec la soustraction de x entre y")
-
+y = 5
+z = x - y
 #une expression: n'importe quelle écriture à droite de l'affectation
-
+# en python : on peut remplacer une valeur litérale par 
+# - une variable de même valeur 
+# - ou une expression qui RETOURNE la même valeur
+print(7, z, x - y)
 # %% ------------ unpacking ----------------------
 
 x, y = 10, 5 # on peut affecter plusieurs variables en même temps
@@ -64,23 +73,35 @@ print(v, w)
 ## input(): saisir un âge et un prénom à partir du clavier 
 ##        : et RETOURNER la valeur saisie
 
+# on met dans age, la valeur de retour de l'expression input("age:") qui sera toujours une str
+age = input("age:")
+prenom = input("prénom:")
+
 print("type(): voir le type de l'âge")
+print(type(age))
 
 print("int(): conversion en entier")
+age = int(age)
 ## REM: il y a une fonction de conversion pour chaque type de donnée 
 
 print("créer une variable user qui contient à la fois le prénom et l'âge")
+user = {"prenom": prenom, "age": age} # dictionnaire
 
 ## print(): nombre de paramètres quelconque
-
+print("utilisateur:", user)
 
 # %% ---------- valeurs litérales, variables, expressions ---------------
 
 ## prendre un entier au clavier et afficher la valeur x + 2
 
 # on peut décomposer en plusieurs étapes
+x = input("saisir un entier:")
+x = int(x)
+x += 2
+print(x)
 
 # en une seule ligne : mais c'est moins lisible et controlable
+print(int(input("saisir un entier:")) + 2)
 
 # %% ---------- MINI-EXO: opérateurs arithmétiques -------------------------
 # 1. saisir un entier au clavier => compris entre 0 et 86400 (nb de secondes dans une journée)

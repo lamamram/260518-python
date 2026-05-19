@@ -47,13 +47,29 @@ civilite_nom_complet = "Mr. Joe DOE"
 
 # %% -------------- retourner l'indice d'une str ---------------------------
 
-civilite_nom_complet = "Mr. Joe DOE"
+civilite_nom_complet = "Mr. Joe DOe"
 
 # afficher la civilité, le prénom, le nom à partir des indices de J et D
+# 1. connaître les positions de J et D dans la chaine
+index_J, index_D = civilite_nom_complet.index("J"), civilite_nom_complet.index("D")
+print(index_J, index_D)
+# 1. bis c'est PRESQUE l'inverse de voir le caractère à la position index_J
+print(civilite_nom_complet[index_J], civilite_nom_complet[index_D])
+# 1.ter: connaître la position de "e" ???
+index_e1 = civilite_nom_complet.index("e")
+index_e2 = civilite_nom_complet.index("e", index_e1 + 1)
+print(index_e1, index_e2)
 
-
+# 2. on peut "slicer" le prénom et le nom avec les indices calculés
+# ------------------------ entre le J et le D (espace non compris) -------- du D vers la fin
+prenom, nom = civilite_nom_complet[index_J: index_D - 1], civilite_nom_complet[index_D:]
+print(prenom, nom)
 # même chose mais en remettant les valeurs slicées en minuscules
 
+# 3. j'enchaine le  slicing (qui est un str) avec son .lower
+print(civilite_nom_complet[index_J: index_D - 1].lower(), civilite_nom_complet[index_D:].lower())
+# en moins méchant
+print(prenom.lower(), nom.lower())
 
 # %% -------------- list: indexation, concaténation, slicing -------------
 

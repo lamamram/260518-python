@@ -24,4 +24,10 @@ injections = {
 }
 
 # %%
+index_start = _template.index("((") + 2
+index_end = _template.index("))")
+key = _template[index_start:index_end]
+print(key)
 
+_template.replace("((" + key + "))", injections[key])
+# %%

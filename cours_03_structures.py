@@ -200,6 +200,16 @@ print("boom")
 fruits = ["pomme", "poire", "framboise"]
 
 # programmation fonctionnelle et + performante que les boucles for pour transformer une liste
+# def upper(s: str) -> str:
+#   return s.upper()
+
+# print(list(map(upper, fruits)))
+
+# print(list(map(str.upper, fruits)))
+
+# fonction lambda : fonction sans nom, donc à usage unique, qui fait la corresondance entre une entrée er sa tranformation
+print(list(map(lambda f: f.upper(), fruits)))
+
 
 # %% ----------------- fonctionnelle: filter ---------------------
 

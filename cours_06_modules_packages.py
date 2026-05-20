@@ -64,13 +64,16 @@ datetime.now() + timedelta(minutes=3)
 # ici le "." on appelle çà le "chemin python": Python Path (comme "/" ou "\")
 ## un package est un dossier qui contient un ou des modules ou des sous packahes 
 ## et qui contient un fichier nommé __init__.py qui peut être vide
+import utils.tools
 
 
 # créer un package utils et copier le module tools dans utils
 # importer tools à partir de utils
 
 # à partir du module tools dans le package, importer la fonction
+from utils.tools import parse_template
 
+# utils.tools.parse_template(...)
 
 
 

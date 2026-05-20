@@ -65,3 +65,30 @@ for _ in range(_template.count("((")):
   _template = _template.replace("((" + key + "))", injections.get(key, "N/A"))
 print(_template)
 # %%
+
+## porter le code du while ou du for en fonction
+## 0/ copier coller le code et l'entourer avec le bloc def ????():
+## 1/ vous nommez la fonction de façon pertinente
+## 2/ gérer la valeur de retour
+## 3/ trouver les paramètres pertinents (positionnels/obligatoires), nommés avec defaut, *, **
+## 4/ faire le refactoring: remplacer les variables globales de bout de code d'origine par les paramètres
+
+def parse_template(
+    tpl: str, 
+    values: dict, 
+    sep_in: str="{{", 
+    sep_out: str="}}", 
+    default: str="N/A"
+  ):
+  for _ in range(tpl.count(sep_in)):
+    index_start = tpl.index(sep_in) + len(sep_in)
+    index_end = tpl.index(sep_out)
+    key = tpl[index_start:index_end]
+
+    tpl = tpl.replace(sep_in + key + sep_out, str(values.get(key, default)))
+  return tpl
+
+print(parse_template(_template, injections, sep_out="))", sep_in="(("))
+
+print(parse_template("machin: {{key}}", {"key": 33}))
+# %%

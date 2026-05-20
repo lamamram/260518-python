@@ -124,7 +124,9 @@ def ma_fonction(a, b, c):
 
 l = [1, 2, 3]
 # injecter les éléments de la liste l en tant que paramètres d'appel de ma_fonction
+ma_fonction(l[0], l[1], l[2])
 
+ma_fonction(*l)
 # %% paramètres "variadiques" **kwargs
 ## **kwargs: permet de définir un nombre variable de paramètres nommés
 ## le bloc peut alors utiliser un dict kwargs
@@ -155,5 +157,5 @@ dico = {"a": 1, "b": 2, "c": 3}
 
 
 
-
+ma_fonction(**dico)
 # %%

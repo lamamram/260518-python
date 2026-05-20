@@ -24,10 +24,44 @@ injections = {
 }
 
 # %%
+# avec while
+# while _template.count("(("):
+while "((" in _template:
+  index_start = _template.index("((") + 2
+  index_end = _template.index("))")
+  key = _template[index_start:index_end]
+
+  _template = _template.replace("((" + key + "))", injections.get(key, "N/A"))
+
+print(_template)
+
+
+# %%
+# 1ère occurence
 index_start = _template.index("((") + 2
 index_end = _template.index("))")
 key = _template[index_start:index_end]
 print(key)
 
-_template.replace("((" + key + "))", injections[key])
+_template = _template.replace("((" + key + "))", injections[key])
+
+# %%
+
+# for sur le dico mais ne peux pas traiter les 
+# valeurs qu'il ne connaît pas
+
+for k, v in injections.items():
+  _template = _template.replace("((" + k + "))", v)
+
+print(_template)
+# %%
+# avec for qui détermine ex ante le nb de remplacement à faire
+# "_" => je n'utilise pas la variable locale du bloc for
+for _ in range(_template.count("((")):
+  index_start = _template.index("((") + 2
+  index_end = _template.index("))")
+  key = _template[index_start:index_end]
+
+  _template = _template.replace("((" + key + "))", injections.get(key, "N/A"))
+print(_template)
 # %%

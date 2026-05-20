@@ -207,6 +207,7 @@ fruits = ["pomme", "poire", "framboise"]
 
 # print(list(map(str.upper, fruits)))
 
+# map: fonction qui applique une fonction en paramètre sur chaque élément d'un itérable en paramètre
 # fonction lambda : fonction sans nom, donc à usage unique, qui fait la corresondance entre une entrée er sa tranformation
 print(list(map(lambda f: f.upper(), fruits)))
 

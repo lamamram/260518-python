@@ -173,10 +173,27 @@ temp = int(input("saisir une temperature en °C: "))
 #         on remet une pelettée de charbon dans la cheminée
 #         donc on resaisit temp à partir du clavier
 # afficher boom quand on sort de la boucle
+while temp < 100:
+    temp -= 10
+    print(temp)
+    if temp < 25:
+        temp = int(input(f"{temp}: pelettée en °C: "))
+print("boom")
 
 # %% --------------- boucle infinie: condition toujours vraie --------------------------
 
+temp = int(input("saisir une temperature en °C: "))
 # idem avec une boucle infinie
+while True:
+    temp -= 10
+    print(temp)
+    if temp < 25:
+        temp = int(input("saisir une temperature en °C: "))
+    if temp >= 100:
+        break
+print("boom")
+
+
 
 # %% ----------------- map ---------------------
 

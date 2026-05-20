@@ -93,4 +93,5 @@ print(f"Nom du module importé: {__name__}")
 
 # ici c'est une convention qui fait référence au int main(void){} en C
 if __name__ == "__main__":
-  tools.parse_template("blabla {{value}}", {"value": 50}, debug=tools.DEBUG)
+  tools.parse_template("blabla {{value}}", {"value": 50}, debug=True)
+# %%

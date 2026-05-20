@@ -17,5 +17,6 @@ def parse_template(
   return tpl
 
 
-# importer un module === exécuter la totalité du code importé => pas de print
-# print("coucou")
+if __name__ == "__main__":
+  # importer un module === exécuter la totalité du code importé => pas de print
+  print("coucou")

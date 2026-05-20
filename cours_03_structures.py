@@ -203,6 +203,7 @@ fruits = ["pomme", "poire", "framboise"]
 # def upper(s: str) -> str:
 #   return s.upper()
 
+## ici je veux l'objet fonction upper et PAS sa valeur de retour upper(...)
 # print(list(map(upper, fruits)))
 
 # print(list(map(str.upper, fruits)))
@@ -211,25 +212,35 @@ fruits = ["pomme", "poire", "framboise"]
 # fonction lambda : fonction sans nom, donc à usage unique, qui fait la corresondance entre une entrée er sa tranformation
 print(list(map(lambda f: f.upper(), fruits)))
 
-
 # %% ----------------- fonctionnelle: filter ---------------------
 
 fruits = ["pomme", "poire", "framboise"]
-# commencent par "p"
+# je ne veux que les fruits qui commencent par "p"
+
+# filter: fonction qui retourne 
+# les valeurs de l'itérable en paramètre, 
+# qui retournent True à la fonction en paramètre
+print(list(filter(lambda f: f.startswith("p"), fruits)))
 
 # %% ------------------ fonctionnelle sorted -------------
 import random
 
+# liste en intension
 rows = [ f"row_{i}" for i in range(20)]
 print(rows)
 random.shuffle(rows)
 print(rows)
 
-
+sorted(rows, key=lambda r: int(r[4:]))
 # %% ------------------ fonctionnelle: avec fonction nommé --------------------
 
 def square(x):
     return x**2
 
+# x -> x**2
+
 numbers = [1, 2, 3, 4, 5]
 # afficher la liste des carrés de numbers en utilisant map et la fonction square
+# print(list(map(square, numbers)))
+print(list(map(lambda x: x**2, numbers)))
+# %%

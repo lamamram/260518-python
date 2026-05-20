@@ -4,6 +4,7 @@
 2/ on veut itérer sur les valeurs saisies pour vérifier
 que ces valeurs sont des entiers relatifs (1er cas entier naturel ensuite 2ème cas négatif)
 3/ si c'est convertible on ajoute la valeur convertie dans une liste
+3b/ si ce n'est pas convertible => "casser la boucle"
 4/ calculer la moyenne depuis la liste
 5/ présenter le résultat avec 2 chiffres sign.  
 """
@@ -20,7 +21,7 @@ candidates
 
 # %%
 # initialiser les listes pour traiter les saisies
-integers, errors = [], []
+integers = []
 for candidat in candidates:
   # nettoyer les espaces à gauche et à droite
   candidat = candidat.strip()
@@ -29,19 +30,14 @@ for candidat in candidates:
   if candidat.isnumeric() or (candidat.startswith("-") and candidat[1:].isnumeric()):
     integers.append(int(candidat))
   else:
-    if candidat:
-      errors.append(candidat)
-  
-integers
-
-# %%
-# s'il n'y a pas d'erreurs ==> si errors est la liste vide []
-if not errors:
+    print(f"{candidat}: n'est pas un entier !")
+    break
+# s'il n'y a pas d'erreurs ==> car pas de break
+else:
   # s'il ya des integers ==> si intergers contient des nombres ==> n'est PAS []
   if integers:
     avg = round(sum(integers) / len(integers), 2)
     print(f"moyenne à 2 décimales sign. de { integers }: {avg}")
   else:
     print("liste vide !!!!")
-else:
-  print(f"valeurs défectueuses: {errors}")
+# %%

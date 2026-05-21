@@ -12,9 +12,11 @@ account = {
 # créer une fonction init_account qui va mettre à jour les champs d'un dict account en param
 # à partir de paramètres balance et overdraft
 def init_account(account: dict, balance: float, overdraft: float) -> dict:
-  account["balance"] = balance
-  account["overdraft"] = overdraft
-  return account
+  # je fais un clone en  du compte générique
+  acc = account.copy()
+  acc["balance"] = balance
+  acc["overdraft"] = overdraft
+  return acc
 
 # créer une fonction withdraw pour effectuer un retrait d'un montant sur un compte en param.
 def withdraw(account: dict, amount: float):
@@ -36,30 +38,48 @@ if __name__ == "__main__":
 
   withdraw(personal_account, amount)
   print(f"nouveau solde: {personal_account["balance"]}")
+  print(account)
   
 # %% --- même exemple en Programmation Orientée Objet (POO) ---------
 
 ## REM. Classe  == Type de donnée en python
+class Account:
 ## les classes sont nommées en PascalCase ou camelCase != snake_case
 
-    # "variables internes" => ATTRIBUTS et en particuliuer les attributs de classe
+  # "variables internes" => ATTRIBUTS et en particuliuer les attributs de classe
+  balance = 0.
+  overdraft = 0.
+  # "fonctions internes" => METHODE == ATTRIBUT de type fonction 
+      # account est l'objet lui même 
+      # => donc on a pas besoin de l'ajouter quand l'objet instancié appelle la méthode
+      # on accède aux éléments internes avec l'opérateur "."
+  # self est l'objet qu'on va créer dans le prog. principal
+  # self est toujours le 1er paramètre de toute méthode
+  
+  def __init__(self, balance: float, overdraft: float) -> None:
+    self.balance = balance
+    self.overdraft = overdraft
 
-    # "fonctions internes" => METHODE == ATTRIBUT de type fonction 
-       # account est l'objet lui même 
-       # => donc on a pas besoin de l'ajouter quand l'objet instancié appelle la méthode
-       # on accède aux éléments internes avec l'opérateur "."
-
+  def withdraw(self, amount: float):
+    if amount < 0:
+      print(f"Transaction refusée: {amount} négatif")
+    elif amount > self.balance + self.overdraft:
+      print(f"Transaction refusée: {amount} fonds insuffisants")
+    else:
+      self.balance -= amount
+      print(f"Transaction acceptée")
 ## programme principal
 
 if __name__ == "__main__":
-  pass
   ## REM. on peut appeler une classe et retourner une variable de type Account 
   ## => le terme exact est instancier (créer) un objet de cette classe
   # 1. créer un objet account à partir de l'instanciation de la classe()
-
   # 2. donner 1000 au solde de l'objet account et 200 au découvert d'account
+  personal_account = Account(balance=1000, overdraft=200)
 
   # 3. faire un retrait
+  personal_account.withdraw(100)
+  print(f"nouveau solde: { personal_account.balance }")
 
 
 # %% --------------------- utilisation de la méthode magique __init__() ------------

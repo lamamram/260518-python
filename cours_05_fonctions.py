@@ -127,6 +127,7 @@ l = [1, 2, 3]
 ma_fonction(l[0], l[1], l[2])
 
 ma_fonction(*l)
+
 # %% paramètres "variadiques" **kwargs
 ## **kwargs: permet de définir un nombre variable de paramètres nommés
 ## le bloc peut alors utiliser un dict kwargs

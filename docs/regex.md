@@ -2,7 +2,7 @@
 
 ## définition
 
-> regex: chaîne de caractères qui représente un modèle de chaines de caractère
+> regex: chaîne de caractères qui représente un modèle de chaines de caractère à trouver dans une cible
 > xxx.yyy@zzz.ttt.ee => adresse email
 
 ## méta-langage de regex
@@ -24,6 +24,8 @@
   + `{n}`: exactement n fois
   + `{n,}`: au - n fois
   + `{n,m}`: entre n et m fois
+
+* groupe: `(...)` : permet de regrouper des éléments pour les quantifier ou les référencer
                (-----groupe-----)
 `[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@...`
 

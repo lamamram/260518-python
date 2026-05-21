@@ -10,6 +10,8 @@ class Account:
   def __str__(self):
     return f"account: {self.balance} with {self.overdraft}"
 
+  ## comportement en ajout (+)
+  ## les méthodes permettent d'ajouter des comportement aux objets custom
   def __add__(self, acc):
     return self.balance + acc.balance
 

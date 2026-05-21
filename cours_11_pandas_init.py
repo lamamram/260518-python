@@ -20,7 +20,22 @@ columns = ["name", "age", "address", "size"]
 index = ["user1", "user2", "user3"]
 
 # %% -------------- création classique: data | columns | indexes -------------------
-
+df = pd.DataFrame(
+  data=data, 
+  columns=columns,
+  index=index
+  # on ajuste tout de suite les types de données attendus
+).astype(
+  dtype={
+    "age": "int8",
+    "size": "float16"
+})
+# dimension 2, (3 lignes x 4 cols) et 12 cellules
+df.ndim, df.shape, df.size
+# types des colonnes : int64 / float64 ...
+df.dtypes
+# résumé
+df.info()
 # %% --------------- idem avec des colum_set --------------------------------
 
 # données transposées en colonnes

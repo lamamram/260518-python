@@ -12,3 +12,12 @@
 """
 
 # %%
+
+from bank.misc import Account, Client
+
+acc = Account(1000)
+print(acc.balance)
+
+cl = Client("john", "doe", "2025-05-21")
+print(cl.get_fullname())
+# %%

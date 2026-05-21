@@ -28,8 +28,6 @@ if __name__ == "__main__":
 
 def division(a: float, b: float) -> float:
     """cette fonction retourne le résultat de la division de a par b"""
-    #  if b == 0:
-    #         return "division par zéro impossible"
     return a / b
 
 # idem mais avec plusieurs pbs: 
@@ -68,6 +66,26 @@ if __name__ == "__main__":
 # 1/ on commence en mettant Exception qui capture tout
 # 2/ à l'usage, on voit les erreurs fréquentes et on individualise les traitements de erreurs
 # 3/ si l'on voit des types d'erreurs qui seront gérées de la même façon, alors on peut les capturer en même temps
+
+# %% ---------------- else & finally -------------------------
+def division(a: float, b: float) -> float:
+    """cette fonction retourne le résultat de la division de a par b"""
+    return a / b
+
+if __name__ == "__main__":
+  try:
+      produit = {"price": 10}
+      num, denom = "5", 2
+      ratio = division(num, denom)
+      prix_modifie = produit["prix"] * ratio
+  except Exception as e:
+  # except (ZeroDivisionError, KeyError) as e:
+     print(e)
+  # le bloc du else ne s'exécutera QUE si le try s'exécute jusqu'au bout sans erreur
+  else:
+     print(f"prix modifié: {prix_modifie}")
+  finally:
+     print("Fais qqch tout le temps, même en cas de plantage !")
 
 # %% --- lever une exception nous même quand on a un pb "métier" ---------
       

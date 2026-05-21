@@ -15,25 +15,6 @@ class Account:
       self.balance -= amount
       print(f"Transaction acceptée")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Client:
   def __init__(self, firstname: str, lastname: str, date_str: str, date_format: str="%Y-%m-%d"):
     self.firstname = firstname

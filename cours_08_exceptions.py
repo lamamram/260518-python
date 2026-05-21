@@ -75,7 +75,7 @@ def division(a: float, b: float) -> float:
 if __name__ == "__main__":
   try:
       produit = {"price": 10}
-      num, denom = "5", 2
+      num, denom = 5, 2
       ratio = division(num, denom)
       prix_modifie = produit["prix"] * ratio
   except Exception as e:
@@ -88,15 +88,26 @@ if __name__ == "__main__":
      print("Fais qqch tout le temps, même en cas de plantage !")
 
 # %% --- lever une exception nous même quand on a un pb "métier" ---------
-      
-  
+
+def avg(l: list) -> float:
+   for elem in l:
+      # if elem < 0 and elem > 20:
+      if not (0 <= elem <= 20):
+         raise ValueError(f"note {elem} est aberrante")
+        
+   return sum(l) / len(l)
+
 # 1. créer une liste de  notes de 0 -> 20 avec deux valeurs aberrantes -4 et 22
+notes = [5, 17, 10, -4, 23]
 # 2. créer la fonction average qui calcule la moyenne
 #    et calculer la moyenne de la liste de notes
 # 3. utiliser le mot clé raise <classe>() qui génère une erreur si la note est aberrante
 #    tip: trouver une erreur native de python de type XxxxxError
 # 4. protéger le calcul de la moyenne des notes
-
-
+try:
+  moyenne = avg(notes)
+  moyenne
+except ValueError as e:
+   print(e)
 
 # %%

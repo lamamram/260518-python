@@ -127,10 +127,17 @@ if __name__ == "__main__":
 # instancier un objet t d'une classe Truc vide
 
 d = dict(k1=1, k2=2)
+d
+
+class Truc:
+  pass
+
+t = Truc()
 
 # afficher le type de t et de d
+type(d), type(t)
 # vérifier que t est d'instance de Truc  et d instance de dict avec isinstance()
-
+isinstance(d, dict), isinstance(t, Truc)
 
 # %% ------------------------ exemple client ---------------------------------
 

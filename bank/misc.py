@@ -5,6 +5,13 @@ class Account:
   def __init__(self, balance: float, overdraft: float=200) -> None:
     self.balance = balance
     self.overdraft = overdraft
+  
+  ## comportement en affichage et en conversion en str
+  def __str__(self):
+    return f"account: {self.balance} with {self.overdraft}"
+
+  def __add__(self, acc):
+    return self.balance + acc.balance
 
   def withdraw(self, amount: float):
     if amount < 0:

@@ -47,8 +47,9 @@ class Account:
 ## les classes sont nommées en PascalCase ou camelCase != snake_case
 
   # "variables internes" => ATTRIBUTS et en particuliuer les attributs de classe
-  balance = 0.
-  overdraft = 0.
+  # ce sont les attributs de classe
+  # balance = 0.
+  # overdraft = 0.
   # "fonctions internes" => METHODE == ATTRIBUT de type fonction 
       # account est l'objet lui même 
       # => donc on a pas besoin de l'ajouter quand l'objet instancié appelle la méthode
@@ -56,7 +57,7 @@ class Account:
   # self est l'objet qu'on va créer dans le prog. principal
   # self est toujours le 1er paramètre de toute méthode
   
-  def __init__(self, balance: float, overdraft: float) -> None:
+  def __init__(self, balance: float, overdraft: float=200) -> None:
     self.balance = balance
     self.overdraft = overdraft
 
@@ -75,7 +76,20 @@ if __name__ == "__main__":
   ## => le terme exact est instancier (créer) un objet de cette classe
   # 1. créer un objet account à partir de l'instanciation de la classe()
   # 2. donner 1000 au solde de l'objet account et 200 au découvert d'account
-  personal_account = Account(balance=1000, overdraft=200)
+  
+  ## instanciation sans __init__ avec les attributs de classes 
+  ## qui deviennent des attributs d'objet
+  # personal_account = Account()
+  # personal_account.balance = 1000
+  # personal_account.overdraft = 200
+  # print(f"balance de la classe: {Account.balance}")
+  # print(f"balance de l'objet: {personal_account.balance}")
+  # personal_account = Account(balance=1000, overdraft=200)
+
+  ## instanciation avec __init__
+  # pas besoin d'attributs de classes cat les attributs d'objet sont créés au moment
+  # de la création de l'objet
+  personal_account = Account(1000)
 
   # 3. faire un retrait
   personal_account.withdraw(100)

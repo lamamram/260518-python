@@ -15,8 +15,12 @@ def division(a: float, b: float) -> float:
 ## ET l'entête except
 ##       s'il y a erreur, le bloc try s'interromp et exécute le bloc except
 if __name__ == "__main__":
-
-  pass
+  try:
+    num, denom = 5, 0
+    ratio = division(num, denom)
+    print(f"resultat: {ratio}")
+  except:
+    print("pb !!")
 
 # gérer le pb de dénominateur avec une exception
 
@@ -37,6 +41,27 @@ def division(a: float, b: float) -> float:
 ## except (<classe1>, <classe2>) : capture la 1ère erreur liée au tuple de classes d'exception 
 ## except <classe> as e: //
 ##                       et injecte un objet exception e dans le bloc
+if __name__ == "__main__":
+
+  try:
+    produit = {"price": 10}
+    num, denom = 5, 0
+    ratio = division(num, denom)
+    print(f"prix modifié: {produit["prix"] * ratio}")
+  ## capture individuelle des erreurs ==> pour traitement singulier
+  # except ZeroDivisionError as exc:
+  #   # print(f"pb de zero div !!: denom = {denom}")
+  #   print(f"{type(exc)}: {exc}")
+  # except KeyError as exc:
+  #   print(f"{type(exc)}: {exc}")
+
+  ## capture collective d'erreurs spécifiées avec traitement unique
+  # except (ZeroDivisionError, KeyError) as e:
+  #    print(e)
+
+  ## capture TOUT => Exception est la classe mère de toutes les autres
+  except Exception as e:
+     print(e)
 
 
 ## TIP: quand on veut protéger un code donnée

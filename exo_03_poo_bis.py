@@ -15,13 +15,17 @@
 
 from bank.misc import Account, Client
 
-acc = Account(1000)
-acc2 = Account(2000)
+cl = Client("john", "doe", "2025-05-21")
+print(cl.get_fullname())
+
+acc = Account(1000, cl)
+acc2 = Account(2000, cl)
 print(acc.balance)
 print(acc)
 print(acc + acc2)
 
+acc.set_10birthday_bonus()
+acc.balance
 
-cl = Client("john", "doe", "2025-05-21")
-print(cl.get_fullname())
+
 # %%

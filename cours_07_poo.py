@@ -153,7 +153,15 @@ isinstance(d, dict), isinstance(t, Truc)
 # reprendre l'exemple précédent sachant qu'un client EST une personne avec un prénom et un nom
 ## person est considérée comme classe parente de client
 ## client est //                      enfant de personne , hérite de personne
+from datetime import datetime
 
+class Person:
+  def __init__(self, f: str, l: str):
+    self.firstname = f
+    self.lastname = l
+  
+  def get_fullname(self) -> str:
+    return f"{self.firstname.capitalize()} {self.lastname.upper()}"
 ## la classe enfant peut réutiliser directement les méthodes parentes
 ## la classe enfant peut également créer ses propres méthodes
 ## super().<methode>() permet d'exécuter une méthode de la classe PARENT 
@@ -164,8 +172,17 @@ isinstance(d, dict), isinstance(t, Truc)
 
 # classe client est une personne
 #    utilise prénom, nom et date_joint      
+class Client(Person):
+  def __init__(self, firstname: str, lastname: str, date_str: str, date_format: str="%Y-%m-%d"):
+    super().__init__(firstname, lastname)
+    self.date_joint = datetime.strptime(date_str, date_format)
+
+  def get_date_joint(self, format: str="%Y-%m-%d") -> str:
+    return self.date_joint.strftime(format)
 
 
+cl = Client("john", "doe", "2016-05-21")
+cl.get_fullname()
 # %% ------------------------- injection de dépendances -----------------------------
 
 # relation de type AVOIR entre une classe "utilisateur" et une autre qui est une dépendance

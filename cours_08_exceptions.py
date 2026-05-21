@@ -90,12 +90,16 @@ if __name__ == "__main__":
 # %% --- lever une exception nous même quand on a un pb "métier" ---------
 
 def avg(l: list) -> float:
-   for elem in l:
-      # if elem < 0 and elem > 20:
-      if not (0 <= elem <= 20):
-         raise ValueError(f"note {elem} est aberrante")
+  ## on pourrait déporter ce contrôle dans un décorateur python !
+  errors = []
+  for elem in l:
+    # if elem < 0 and elem > 20:
+    if not (0 <= elem <= 20):
+      errors.append(elem)
+  if errors:
+    raise ValueError(f"notes {errors} sont aberrantes")
         
-   return sum(l) / len(l)
+  return sum(l) / len(l)
 
 # 1. créer une liste de  notes de 0 -> 20 avec deux valeurs aberrantes -4 et 22
 notes = [5, 17, 10, -4, 23]

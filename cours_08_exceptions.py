@@ -106,7 +106,7 @@ notes = [5, 17, 10, -4, 23]
 # 4. protéger le calcul de la moyenne des notes
 try:
   moyenne = avg(notes)
-  moyenne
+  print(moyenne)
 except ValueError as e:
    print(e)
 

@@ -66,14 +66,14 @@ datetime.now() + timedelta(minutes=3)
 ## et qui contient un fichier nommé __init__.py qui peut être vide
 import utils.tools
 
-
+# utils.tools.parse_template(...)
 # créer un package utils et copier le module tools dans utils
 # importer tools à partir de utils
 
 # à partir du module tools dans le package, importer la fonction
 from utils.tools import parse_template
 
-# utils.tools.parse_template(...)
+# parse_template(...)
 
 
 

@@ -7,34 +7,33 @@
 # attention souvent sous windows/Excell on peut avoir des fichiers encodés en iso-8859-1
 
 # creér (ouvrir en mode création) le fichier "mon_fichier.txt" en encodage utf-8
-
-
+f = open("./mon_fichier.txt", mode="w", encoding="utf-8")
 
 # écriture de deux lignes avec les sauts de lignes
-
+f.write("1ère ligne\n")
+f.write("2ème ligne\n")
 
 # important! il faut fermer ce qu'on a ouvert
-
+f.close()
 # %% ----------------- lire le contenu d'un fichier ---------------------
 
 # ouvrir le fichier en lecture et même encodage
-
+f = open("./mon_fichier.txt", mode="r", encoding="utf-8")
 # lire une ligne (avec \n)
 # print rajoute un 2ème  \n
-
+print(f.read(11))
 # lire tout
-
+print(f.read())
 ## REM. notion de curseur: la deuxième lecture reprend 
 ## depuis la fin de la première ligne
-
+f.close()
 # %% ------------- écriture à la fin du fichier (append) -------------------
 # écrire une 3ème ligne dans le fichier 
-
-
+f = open("./mon_fichier.txt", mode="a", encoding="utf-8")
+f.write("3ème ligne\n")
+f.close()
 # vérifier que le contenu existant n'a pas été supprimé
-
 # %% --------------------- readlines / writlelines --------------
-
 
 # %% ------------------- modes avancés ------------------------------
 # remplacer la ligne n
@@ -44,28 +43,52 @@
 
 n = 3
 
+f = open("./mon_fichier.txt", mode="r+", encoding="utf-8")
+
 # la lecture après sera en erreur car le curseur est positionné sur la moitué d'un caractère
 # f.seek(2) # UnicideDecodeError
+for _ in range(n - 1):
+  f.readline()
 
 # je lis 1 ligne du fichier pour positionner le curseur de lecture
-
 ## rem f.tell() : position du curseur d'écriture/lecture
 # la 1ère ligne est composé de 11 caractère
 # tell() retourne est nb d'octet lié à l'encodage => 13
+pos = f.tell()
+
 # utf-8 : 1 octer pour les caractère ASCII et 2 octets avec les autres (è, \n)
 
 ## f.seek(pos) : positionne les curseurs d'écriture/lecture à la position pos
+f.seek(pos)
 ## attention : read et write utilise des caractère 
 ##           : alors que tell et seek utilise des octets !!!
-
+f.write("bonjour\n")
 # positionner tous les curseurs sur la position du curseur de lecture
 
 # écrire un nouveau contenu + \n
-
+f.truncate()
 # supprimer le reste du fichier après le curseur : truncate
 # je me repositionne au début du fichier pour lire le contenu
+f.close()
+# %% --- ob d'encodage ------
+
+### encodage mutliple comme utf-8
+# a-zA-Z0-9,;....! => sur 1 octet
+#éèà¨^ => 2 octets
+
+f = open("./mon_fichier.txt", mode="r", encoding="utf-8")
+# déplacement d'octets et PAS de caractère
+f.seek(2)
+f.read()
+f.close()
 
 # %% -- faciliter les ouvertures/fermetures: gestionnaires de contexte: with --
+
+with open("./mon_fichier.txt", mode="r", encoding="utf-8") as f:
+  print(f.read())
+
+# f est automatiquement fermé !!!!
+f.read()
 
 ## with <ouverture>() as <var>:
   # fichier ouvert
@@ -77,6 +100,9 @@ n = 3
 
 
 # %% ----------- un fichier est un itérable de lignes ----------------------
+with open("./mon_fichier.txt", mode="r", encoding="utf-8") as f:
+  for num, line in enumerate(f, start=1):
+    print(num, line)
 
 
 # %% --------- suppression de la ligne n avec for ----------

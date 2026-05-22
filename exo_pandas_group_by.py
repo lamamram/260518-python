@@ -26,5 +26,28 @@ titanic_df = pd.read_csv(
     encoding="utf8"
 )
 titanic_df.head(20)
+# titanic_df.tail(20)
 
+# %%
+# 1. élaguer
+sub_df = titanic_df.loc[ 
+    titanic_df["who"] != "man" , 
+    ["survived", "pclass", "who"] 
+]
+sub_df
+# %%
+gb = sub_df.groupby(["pclass", "who"])
+results = gb["survived"].agg(["count", "sum", percent])
+
+results
+
+# %%
+# première utilisation de matplotlib avec un df bien formé et un graphe
+
+results.plot(
+    y="percent", 
+    kind="pie", 
+    figsize=(5, 5), 
+    fontsize=5
+)
 # %%

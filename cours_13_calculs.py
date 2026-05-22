@@ -70,4 +70,45 @@ gb = tmp_df.groupby(["species", "sex"])
 gb["body_mass_kg"].agg(["mean", "median"])
 
 
+# %% ------------ PIVOT (tableau dynamiques croisés)
+
+students = [ f"student_{i}" for i in range(1, 11)]
+subjects = ["maths", "english", "biology", "physics"]
+coeffs = [4,3,2,3]
+multi_students = np.repeat(students, repeats=4)
+multi_subjects = np.tile(subjects, reps=10) # aka subjects * 10
+multi_coeffs = np.tile(coeffs, reps=10)
+notes = rng.integers(0, 40, endpoint=True, size=40) / 2
+notes_df = pd.DataFrame(
+    data={
+        # technique par répétition
+        # "student": multi_students,
+        # "subject": multi_subjects,
+        "coeff": multi_coeffs,
+        "note": notes
+    },
+    # OU technique par un index multiple généré avec le produit cartésiens des listes
+    index=pd.MultiIndex.from_product([students, subjects])
+)
+notes_df
+
+notes_df = notes_df.reset_index(
+).rename(columns={
+  "level_0": "student",
+  "level_1": "subject"
+})
+
+notes_df
+
+# %%
+
+pivoted_df = notes_df.pivot(
+  # valeurs qui vont devenir des colonnes
+  columns="subject",
+  values=["coeff", "note"],
+  index="student"
+)
+pivoted_df
+
+
 # %%

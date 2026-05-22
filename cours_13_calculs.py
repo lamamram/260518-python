@@ -56,4 +56,18 @@ pg_df["bill_vol_cm3"] = np.around(1/3 * pg_df["bill_depth_mm"] * np.pi * (pg_df[
 pg_df["bill_vol_cm3"]
 
 
+# %%  -------- group by: aggregat par catégorie
+
+# group by est une transformation coûteuse
+# => il faut le faire sur sous df utile
+
+tmp_df = pg_df[["species", "sex", "body_mass_kg"]]
+
+gb = tmp_df.groupby(["species", "sex"])
+
+# gb["body_mass_kg"].mean()
+
+gb["body_mass_kg"].agg(["mean", "median"])
+
+
 # %%

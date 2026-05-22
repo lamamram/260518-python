@@ -70,4 +70,19 @@ user_df.loc["jimmy":"Joan" , ["size","age"] ]
 # sous df double slice
 user_df.loc[ "jimmy":"Joan" , "age":"size" ]
 
+# %% ----------- filtrage par valeur ---------------
+
+# lignes ayant la colonne "age" inférieure à 40
+user_df.loc[ 
+  user_df["age"] < 40 , 
+  ["size","age"]
+]
+
+## plusieurs filtres: & => and, | => or, ~ => not
+
+user_df.loc[ 
+  (user_df["age"] < 40) & (user_df["size"] > 1.70) , 
+  ["size","age"]
+]
+
 # %%

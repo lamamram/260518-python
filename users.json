@@ -1,0 +1,17 @@
+[
+  {
+    "name":"jimmy",
+    "age":28,
+    "address":"2 rue de la rép, 44000 NANTES"
+  },
+  {
+    "name":"Joan",
+    "age":33,
+    "address":"12 bd Haussmann 75009 Paris"
+  },
+  {
+    "name":"Paul",
+    "age":76,
+    "address":"10, chemin des lilas, 13002 MARSEILLE"
+  }
+]

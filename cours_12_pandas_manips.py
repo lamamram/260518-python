@@ -42,11 +42,32 @@ user_df
 # version mutable
 user_df.drop(columns="age", inplace=True)
 user_df
-# %% --------------- accès aux colones et lignes -------------
+# %% --------------- accès aux colones et lignes avec [] -------------
 
 # une colonne est une Série
 print(user_df["age"], type(user_df["age"]))
 
 # sous dataframe avec selection de colonnes
 user_df[ ["age", "size"] ]
+
+# %% ------------------ idem avec le slicing [:] ----------
+
+# par défaut [:] => selectionne les lignes
+# pas très pratique
+user_df[0:-1]
+
+# idem avec les indexes => bonne selection des lignes
+user_df.loc["jimmy":"Joan"]
+
+# %% ----------------- selection lignes ET colonnes --------------
+
+# slice ligne sur une colonne => sous - série
+user_df.loc["jimmy":"Joan" , "age"]
+
+# sous df slice ligne et selection discrètes de colonnes
+user_df.loc["jimmy":"Joan" , ["size","age"] ]
+
+# sous df double slice
+user_df.loc[ "jimmy":"Joan" , "age":"size" ]
+
 # %%

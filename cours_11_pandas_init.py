@@ -104,6 +104,17 @@ df.to_json(
   indent=2
 )
 
+# %% -------------------- perfs -----------------------
+
+# pandas lis à travers le réseau: un fichier de 90Mo zippé: ~20s
+URL = "https://www.afnic.fr/wp-media/ftp/documentsOpenData/202503_OPENDATA_A-NomsDeDomaineEnPointFr.zip"
+dns_df = pd.read_csv(
+  URL, 
+  sep=";", 
+  encoding='utf-8'
+)
+dns_df
+
 
 
 

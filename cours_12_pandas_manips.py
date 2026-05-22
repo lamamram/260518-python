@@ -103,4 +103,10 @@ user_df.loc[
   (user_df["age"] < 40) & (user_df.index.str != "joan") , 
   ["size","age"]
 ]
+# %%  ----------- remettre en jeu le NaN ---------
+
+user_df["size"] = user_df["size"].fillna(0.)
+user_df.dropna()
+
+
 # %%

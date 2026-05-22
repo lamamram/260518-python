@@ -85,4 +85,22 @@ user_df.loc[
   ["size","age"]
 ]
 
+## dégager les NaN
+
+user_df.loc[ 
+  (user_df["age"] < 40) & ~(user_df["size"].isna()) , 
+  ["size","age"]
+]
+
+# dégager tous les nan où qu'ils soient dans le df
+user_df.dropna().loc[(user_df["age"] < 40), ["size", "age"]]
+
+
+# age < 40 ET nom != "joan"
+# 1/ on peut filtrer sur l'index
+# 2/ on peut transformer les séries et l'index de types str avec .str.<function>()
+user_df.loc[ 
+  (user_df["age"] < 40) & (user_df.index.str != "joan") , 
+  ["size","age"]
+]
 # %%

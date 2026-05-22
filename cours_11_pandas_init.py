@@ -39,16 +39,29 @@ df.info()
 # %% --------------- idem avec des colum_set --------------------------------
 
 # données transposées en colonnes
-
+col_data = np.array(data).T.tolist()
+# zip les noms de  colonnes et des données
+col_set = dict(zip(columns, col_data))
 # dictionnaire {clé: données colonne, ...}
-
+df = pd.DataFrame(
+  data=col_set, index=index
+)
+df
 
 
 # %% ---------------- idem avec des records (objets JSON) ----------------
 # records => objets json => dict
-
+records = np.apply_along_axis(
+    lambda row: dict(zip(columns, row)),
+    arr=data,
+    axis=1
+)
+df = pd.DataFrame.from_records(
+  records
+)
+df
 # %% ------------------ écrire en csv -----------------------
-
+pd.read
 
 # %% --------------------- lire en csv ----------------------
 
